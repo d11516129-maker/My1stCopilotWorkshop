@@ -1,0 +1,333 @@
+:root {
+  color-scheme: light;
+  --color-page: #f2f5ef;
+  --color-card: #fffefa;
+  --color-ink: #26332d;
+  --color-muted: #7b8780;
+  --color-line: #e8ece5;
+  --color-accent: #35745c;
+  --color-accent-hover: #285d48;
+  --color-accent-soft: #e7f0e8;
+  --color-danger: #a34e46;
+  --shadow-card: 0 18px 50px rgb(39 57 45 / 9%), 0 2px 8px rgb(39 57 45 / 4%);
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  color: var(--color-ink);
+  background: var(--color-page);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 14% 12%, rgb(216 230 215 / 45%), transparent 34%),
+    radial-gradient(ellipse at 91% 87%, rgb(239 225 203 / 42%), transparent 32%),
+    var(--color-page);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-shell {
+  display: grid;
+  min-height: 100vh;
+  align-content: center;
+  justify-items: center;
+  padding: 48px 20px 36px;
+}
+
+.todo-card {
+  width: min(100%, 520px);
+  padding: 42px 42px 0;
+  overflow: hidden;
+  background: var(--color-card);
+  border: 1px solid rgb(255 255 255 / 78%);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  animation: arrive 500ms ease-out both;
+}
+
+.card-header {
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  margin: 0 0 13px;
+  color: var(--color-accent);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.intro {
+  margin: 10px 0 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.todo-form input {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 15px;
+  color: var(--color-ink);
+  background: #fbfcf9;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.todo-form input::placeholder {
+  color: #9aa49d;
+}
+
+.todo-form input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(53 116 92 / 12%);
+}
+
+.add-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 92px;
+  height: 48px;
+  padding: 0 15px;
+  color: white;
+  background: var(--color-accent);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.add-button:hover {
+  background: var(--color-accent-hover);
+}
+
+.add-button:active {
+  transform: translateY(1px);
+}
+
+.add-button span {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.todo-list {
+  display: grid;
+  gap: 2px;
+  min-height: 72px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-line);
+  animation: appear 220ms ease-out both;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin: 0;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.todo-text {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.todo-item.is-complete .todo-text {
+  color: var(--color-muted);
+  opacity: 0.65;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.delete-button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  padding: 0;
+  color: #89938c;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.delete-button:hover {
+  color: var(--color-danger);
+  background: #f8eeeb;
+}
+
+.empty-state {
+  display: grid;
+  min-height: 72px;
+  place-items: center;
+  color: var(--color-muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.card-footer {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px -42px 0;
+  padding: 0 42px;
+  background: #fafbf8;
+  border-top: 1px solid var(--color-line);
+}
+
+.remaining-count {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-mark {
+  color: #a1aaa3;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.page-note {
+  margin: 20px 0 0;
+  color: #818c84;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-style: italic;
+  animation: arrive 650ms 100ms ease-out both;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 560px) {
+  .page-shell {
+    align-content: start;
+    padding: 28px 16px;
+  }
+
+  .todo-card {
+    padding: 32px 24px 0;
+    border-radius: 13px;
+  }
+
+  .card-header {
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .todo-form {
+    gap: 8px;
+  }
+
+  .add-button {
+    min-width: 82px;
+    padding: 0 12px;
+  }
+
+  .card-footer {
+    margin-right: -24px;
+    margin-left: -24px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
